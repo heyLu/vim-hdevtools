@@ -79,6 +79,11 @@ appropriate (such as your project's `Session.vim`):
 Make sure that each GHC option has its own `-g` prefix (don't group multiple
 options like this: `"-g-isrc\ -Wall"`)
 
+To control the highlighting behaviour of `:HdevtoolsType` you can set
+the `g:hdevtools_highlight` option. If it is set to `'region'` (the
+default) then the complete region whose type is being displayed will be
+highlighted, but if it set to `'boundary'` only the start and the end of
+the expression will be highlighted.
 
 Credits
 -------

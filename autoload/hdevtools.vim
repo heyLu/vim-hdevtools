@@ -459,7 +459,11 @@ function! s:hdevtools_type.highlight(group)
   endif
   call hdevtools#clear_highlight()
   let [l:line1, l:col1, l:line2, l:col2] = self.types[self.ix][0]
-  let w:hdevtools_type_matchid = matchadd(a:group, '\%' . l:line1 . 'l\%' . l:col1 . 'c\_.*\%' . l:line2 . 'l\%' . l:col2 . 'c')
+  if g:hdevtools_highlight == 'region'
+    let w:hdevtools_type_matchid = matchadd(a:group, '\%' . l:line1 . 'l\%' . l:col1 . 'c\_.*\%' . l:line2 . 'l\%' . l:col2 . 'c')
+  elseif g:hdevtools_highlight == 'boundary'
+    let w:hdevtools_type_matchid = matchadd(a:group, '\%' . l:line1 . 'l\%' . l:col1 . 'c\|\%' . l:line2 . 'l\%' . eval(l:col2.'-1') . 'c')
+  endif
 endfunction
 
 function! s:highlight_group()

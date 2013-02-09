@@ -1,5 +1,7 @@
 if exists('b:did_ftplugin_hdevtools') && b:did_ftplugin_hdevtools
   finish
+else
+  let g:hdevtools_highlight = 'region'
 endif
 let b:did_ftplugin_hdevtools = 1
 
